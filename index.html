@@ -1,339 +1,432 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fisioterapia Traumato-Ortopédica</title>
-  <style>
-    :root {
-      --azul-escuro: #1e3a8a;
-      --azul-claro: #3b82f6;
-      --branco: #ffffff;
-      --cinza-claro: #f4f6fa;
-      --cinza: #555;
-      --sombra: rgba(0, 0, 0, 0.1);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Traumato-Ortopedia - Conteúdo Completo de Lesões e Tratamento</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9fcff;
+    color: #33475b;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--cinza-claro);
-      color: var(--cinza);
-    }
+  a {
+    text-decoration: none;
+    color: #2266cc;
+  }
 
-    header {
-      background: var(--azul-escuro);
-      color: var(--branco);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 5px var(--sombra);
-    }
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
 
-    header h1 {
-      text-align: center;
-      font-size: 1.8em;
-    }
+  /* Cabeçalho */
 
+  header {
+    background: #c7ddff;
+    border-bottom: 1px solid #a3c1f7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+  }
+
+  .site-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #1b2a47;
+    user-select: none;
+    letter-spacing: 0.05em;
+  }
+
+  /* Menu desktop */
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2a4372;
+    white-space: nowrap;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    background: #95b9ff;
+    color: #1d2d50;
+  }
+
+  /* Botão menu hambúrguer */
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 28px;
+    height: 22px;
+    justify-content: space-between;
+  }
+
+  .menu-toggle span {
+    background: #2a4372;
+    height: 3.5px;
+    border-radius: 2px;
+  }
+
+  /* Menu mobile (inicialmente escondido) */
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #d6e4ff;
+    border-top: 1px solid #a3c1f7;
+  }
+
+  .mobile-nav a {
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    border-bottom: 1px solid #a3c1f7;
+    color: #2a4372;
+  }
+
+  .mobile-nav a:hover,
+  .mobile-nav a:focus {
+    background: #95b9ff;
+    color: #1d2d50;
+  }
+
+  /* Conteúdo principal */
+
+  main {
+    flex: 1;
+    max-width: 960px;
+    margin: 2rem auto 3rem;
+    padding: 0 1rem;
+  }
+
+  h1, h2 {
+    color: #1b2a47;
+    margin-bottom: 1rem;
+  }
+
+  /* Cards seções */
+
+  section.card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 7px rgb(33 58 106 / 0.1);
+    margin-bottom: 2rem;
+    padding: 1.6rem 2rem;
+    transition: box-shadow 0.3s ease;
+  }
+
+  section.card:hover {
+    box-shadow: 0 6px 15px rgb(33 58 106 / 0.15);
+  }
+
+  section.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  section.card p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+  }
+
+  /* Rodapé */
+
+  footer {
+    background: #c7ddff;
+    padding: 0.7rem 1rem;
+    border-top: 1px solid #a3c1f7;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #1b2a47cc;
+    font-style: italic;
+    user-select: none;
+  }
+
+  /* Responsividade */
+
+  @media (max-width: 720px) {
     nav {
-      margin-top: 10px;
-      text-align: center;
+      display: none;
     }
 
-    nav a {
-      display: inline-block;
-      margin: 10px;
-      color: var(--branco);
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s;
+    .menu-toggle {
+      display: flex;
     }
 
-    nav a:hover {
-      background: var(--azul-claro);
+    .mobile-nav.show {
+      display: flex;
     }
 
     main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 1.5rem auto 2rem;
+      padding: 0 0.7rem;
     }
 
-    section {
-      margin-bottom: 50px;
-      padding: 20px;
-      background: var(--branco);
-      border-radius: 8px;
-      box-shadow: 0 4px 10px var(--sombra);
-      transition: transform 0.2s;
+    section.card {
+      padding: 1rem 1rem;
     }
 
-    section:hover {
-      transform: translateY(-3px);
+    section.card h2 {
+      font-size: 1.3rem;
     }
 
-    section h3 {
-      color: var(--azul-escuro);
-      margin-bottom: 10px;
+    section.card p {
+      font-size: 1rem;
     }
-
-    section p {
-      line-height: 1.6;
-      white-space: pre-wrap;
-    }
-
-    ul, ol {
-      margin-left: 20px;
-      margin-bottom: 15px;
-      color: var(--cinza);
-    }
-
-    ul li, ol li {
-      margin-bottom: 6px;
-    }
-
-    footer {
-      background: var(--azul-escuro);
-      color: var(--branco);
-      text-align: center;
-      padding: 20px;
-    }
-
-    #topo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--azul-claro);
-      color: var(--branco);
-      border: none;
-      border-radius: 50%;
-      padding: 12px 16px;
-      cursor: pointer;
-      font-size: 18px;
-      box-shadow: 0 2px 6px var(--sombra);
-      display: none;
-      z-index: 999;
-    }
-
-    #topo:hover {
-      background: var(--azul-escuro);
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Fisioterapia Traumato-Ortopédica</h1>
-    <nav>
-      <a href="#intro">Introdução</a>
+
+<header>
+  <div class="container nav-wrapper">
+    <div class="site-title" aria-label="Título do site">Traumato-Ortopedia</div>
+    <div class="menu-toggle" aria-label="Abrir menu" role="button" tabindex="0" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav aria-label="Menu principal">
+      <a href="#introducao">Introdução + Contexto</a>
       <a href="#esportes">Esportes</a>
-      <a href="#criancas">Crianças</a>
-      <a href="#idosos">Idosos</a>
+      <a href="#lesoes-criancas">Lesões em crianças</a>
+      <a href="#lesoes-idosos">Lesões em idosos</a>
       <a href="#luxacao">Luxação</a>
       <a href="#fratura">Fratura</a>
-      <a href="#pos-trauma">Pós-Trauma</a>
-      <a href="#complicacoes">Complicações</a>
+      <a href="#entrevista">Entrevista</a>
+      <a href="#pos-trauma">Pós trauma</a>
+      <a href="#complicacao-lesao">Complicação de lesão</a>
       <a href="#imobilizacao">Imobilização</a>
-      <a href="#pos-cirurgico">Pós-Cirúrgico</a>
+      <a href="#pos-cirurgico">Pós cirúrgico + Conclusão</a>
     </nav>
-  </header>
+  </div>
+  <div class="mobile-nav container" id="mobileMenu" aria-label="Menu móvel">
+    <a href="#introducao">Introdução + Contexto</a>
+    <a href="#esportes">Esportes</a>
+    <a href="#lesoes-criancas">Lesões em crianças</a>
+    <a href="#lesoes-idosos">Lesões em idosos</a>
+    <a href="#luxacao">Luxação</a>
+    <a href="#fratura">Fratura</a>
+    <a href="#entrevista">Entrevista</a>
+    <a href="#pos-trauma">Pós trauma</a>
+    <a href="#complicacao-lesao">Complicação de lesão</a>
+    <a href="#imobilizacao">Imobilização</a>
+    <a href="#pos-cirurgico">Pós cirúrgico + Conclusão</a>
+  </div>
+</header>
 
-  <main>
-    <section id="intro">
-      <h3>Introdução</h3>
-      <p>
-        A fisioterapia desempenha um papel crucial no tratamento e na reabilitação de diversas condições clínicas.  
-        A fisioterapia em Traumatologia Ortopédica e Reumatologia (T.O.R.) é uma especialidade que foca no tratamento e recuperação do sistema musculoesquelético, incluindo doenças ortopédicas como fraturas, luxações, lesões musculares e tendinosas, além de condições reumatológicas como artrite e artrose.
-      </p>
-      <p>
-        Esta área utiliza técnicas e procedimentos específicos, tais como exercícios terapêuticos, alongamentos, fortalecimento muscular, técnicas manuais, eletroterapia, entre outros, com o objetivo de restaurar a funcionalidade e promover a melhora da qualidade de vida do paciente.
-      </p>
-      <p>
-        O COFFITO (Conselho Federal de Fisioterapia e Terapia Ocupacional) é o órgão regulamentador e fiscalizador da profissão no Brasil, garantindo a qualidade e ética dos serviços prestados.
-      </p>
-    </section>
+<main>
+  <section id="introducao" class="card" tabindex="0">
+    <h2>Introdução + Contexto</h2>
+    <p>
+      O estudo das lesões musculoesqueléticas é fundamental para compreender o impacto das condições traumáticas e degenerativas sobre a saúde da população. Essas lesões representam uma das principais causas de incapacidade e afastamento das atividades laborais, afetando pessoas de todas as idades e níveis de atividade física.
+    </p>
+    <p>
+      Elas abrangem um amplo espectro, desde traumas agudos, como fraturas e luxações, até doenças crônicas, como osteoartrite e tendinites. O conhecimento aprofundado dos mecanismos envolvidos, dos fatores de risco e das estratégias de prevenção e tratamento é essencial para a prática clínica eficaz.
+    </p>
+    <p>
+      A interdisciplinaridade entre médicos, fisioterapeutas, educadores físicos e demais profissionais da saúde é crucial para o manejo integral do paciente, promovendo a recuperação funcional e a reintegração social.
+    </p>
+    <p>
+      Este conteúdo apresenta uma visão detalhada das principais lesões musculoesqueléticas, suas características, complicações e cuidados, focando na aplicação prática para estudantes e profissionais da saúde.
+    </p>
+  </section>
 
-    <section id="esportes">
-      <h3>Esportes</h3>
-      <p>
-        As lesões esportivas são frequentes entre atletas profissionais e amadores, sendo causadas principalmente por esforços repetitivos, traumas por impacto e movimentos bruscos.
-      </p>
-      <p>
-        Entre as lesões mais comuns estão entorses, distensões musculares, fraturas, luxações e contusões.
-      </p>
-      <p><strong>Prevenção:</strong></p>
-      <ul>
-        <li>Aquecimento e alongamento adequados antes das atividades físicas;</li>
-        <li>Técnica correta durante a prática esportiva;</li>
-        <li>Fortalecimento muscular específico para o esporte;</li>
-        <li>Descanso adequado para evitar fadiga;</li>
-        <li>Hidratação e alimentação equilibrada;</li>
-        <li>Atentar aos sinais de dor e fadiga para evitar agravar lesões.</li>
-      </ul>
-      <p>
-        O tratamento fisioterapêutico visa reduzir a dor e o edema, restaurar a mobilidade articular e fortalecer a musculatura afetada, utilizando recursos como terapia manual, cinesioterapia, eletroterapia e treino funcional.
-      </p>
-    </section>
+  <section id="esportes" class="card" tabindex="0">
+    <h2>Esportes</h2>
+    <p>
+      A prática esportiva, além de ser uma importante ferramenta para a promoção da saúde e bem-estar, também pode ser uma fonte significativa de lesões musculoesqueléticas. Lesões esportivas podem variar desde pequenas distensões musculares até fraturas graves e lesões articulares.
+    </p>
+    <p>
+      Os tipos mais comuns de lesões incluem entorses, luxações, tendinites e fraturas por estresse. A prevenção passa pelo aquecimento adequado, uso de equipamentos de proteção e programas de fortalecimento muscular.
+    </p>
+    <p>
+      O atendimento precoce e o diagnóstico correto são essenciais para evitar complicações e acelerar a recuperação, permitindo o retorno seguro às atividades físicas.
+    </p>
+  </section>
 
-    <section id="criancas">
-      <h3>Lesões em Crianças</h3>
-      <p>
-        Durante o crescimento, as crianças apresentam características específicas no sistema musculoesquelético, como maior flexibilidade óssea e presença de cartilagens de crescimento, o que as torna mais suscetíveis a traumas e fraturas diferenciadas.
-      </p>
-      <p>
-        As causas mais comuns de lesões em crianças incluem quedas, acidentes domésticos, acidentes escolares e traumas durante brincadeiras ou atividades recreativas.
-      </p>
-      <p><strong>Principais lesões:</strong></p>
-      <ul>
-        <li>Fraturas nas áreas de crescimento;</li>
-        <li>Entorses e luxações;</li>
-        <li>Contusões musculares.</li>
-      </ul>
-      <p>
-        O tratamento fisioterapêutico em crianças deve ser adaptado para garantir a redução da dor, controle do edema, prevenção de atrofias e encurtamentos musculares, e recuperação da amplitude de movimento e funcionalidade.
-      </p>
-      <p>
-        Técnicas utilizadas incluem eletroterapia, cinesioterapia, terapia manual e exercícios lúdicos, que facilitam a adesão da criança ao tratamento. A atuação interdisciplinar, envolvendo pediatras, fisioterapeutas, terapeutas ocupacionais e educadores, é fundamental para o sucesso da reabilitação.
-      </p>
-    </section>
+  <section id="lesoes-criancas" class="card" tabindex="0">
+    <h2>Lesões em crianças</h2>
+    <p>
+      O sistema osteomuscular infantil apresenta características peculiares que influenciam o tipo e a evolução das lesões. Os ossos são mais flexíveis e possuem placas de crescimento, o que pode tornar as fraturas e deformidades diferentes das encontradas em adultos.
+    </p>
+    <p>
+      As quedas são a principal causa de trauma, seguidas de acidentes esportivos e traumas diretos. A avaliação cuidadosa é essencial para não comprometer o desenvolvimento ósseo e articular.
+    </p>
+    <p>
+      O tratamento geralmente é conservador, priorizando o realinhamento adequado e a proteção das placas epifisárias para evitar alterações no crescimento.
+    </p>
+    <p>
+      É importante a educação dos responsáveis e a orientação para ambientes seguros, além do acompanhamento fisioterápico para recuperação funcional.
+    </p>
+  </section>
 
-    <section id="idosos">
-      <h3>Lesões em Idosos</h3>
-      <p>
-        O trauma ortopédico em idosos é frequentemente agravado por condições como osteoporose, que fragiliza os ossos, tornando-os mais suscetíveis a fraturas.
-      </p>
-      <p><strong>Fraturas comuns:</strong> quadril, ombro e punho.</p>
-      <p>
-        Além disso, com o envelhecimento, o equilíbrio e a estabilidade na marcha podem estar comprometidos devido a déficits visuais, auditivos e cognitivos, aumentando o risco de quedas.
-      </p>
-      <p><strong>Fatores de risco:</strong></p>
-      <ul>
-        <li>Déficit visual e auditivo;</li>
-        <li>Alterações na marcha;</li>
-        <li>Déficit cognitivo;</li>
-        <li>Uso de medicamentos;</li>
-        <li>Doenças degenerativas;</li>
-        <li>Fraqueza muscular.</li>
-      </ul>
-      <p>
-        Os cuidados no atendimento ao idoso incluem avaliação detalhada do ambiente para garantir segurança, diagnóstico precoce por meio de exames de imagem, tratamento cirúrgico ou conservador conforme indicação, mobilização precoce e reabilitação gradual para recuperar função e autonomia.
-      </p>
-    </section>
+  <section id="lesoes-idosos" class="card" tabindex="0">
+    <h2>Lesões em idosos</h2>
+    <p>
+      Na população idosa, as alterações fisiológicas relacionadas ao envelhecimento, como a diminuição da densidade óssea (osteoporose), redução da massa muscular (sarcopenia) e alterações na coordenação motora, aumentam o risco de quedas e fraturas.
+    </p>
+    <p>
+      As fraturas de quadril, por exemplo, são frequentes e associadas a elevada morbimortalidade. A prevenção envolve avaliação de risco, correção ambiental e exercícios para melhora do equilíbrio e fortalecimento.
+    </p>
+    <p>
+      O tratamento deve ser individualizado, considerando as comorbidades, o estado funcional e o suporte social, para garantir a recuperação e a manutenção da autonomia.
+    </p>
+  </section>
 
-    <section id="luxacao">
-      <h3>Luxação</h3>
-      <p>
-        A luxação é caracterizada pelo deslocamento das extremidades ósseas que formam uma articulação, perdendo o contato normal entre si.
-      </p>
-      <p><strong>Locais comuns:</strong> ombros, joelhos, mandíbula, tornozelo e quadris.</p>
-      <p><strong>Causas:</strong> uso excessivo, impactos, quedas ou pancadas diretas.</p>
-      <p><strong>Sintomas:</strong> dor intensa, dificuldade de movimentação, inchaço, hematomas e sensação de dormência ou formigamento na região afetada.</p>
-      <p><strong>Tratamento:</strong></p>
-      <ul>
-        <li>Recolocação da articulação (redução) realizada por médico;</li>
-        <li>Medicação para controle da dor e inflamação;</li>
-        <li>Imobilização e repouso para cicatrização;</li>
-        <li>Fisioterapia para recuperar amplitude de movimento e força muscular;</li>
-        <li>Cirurgia em casos de luxações graves ou recorrentes.</li>
-      </ul>
-    </section>
+  <section id="luxacao" class="card" tabindex="0">
+    <h2>Luxação</h2>
+    <p>
+      A luxação é a perda completa do contato entre as superfícies articulares, causada por trauma ou esforço excessivo. Pode acometer diversas articulações, sendo as mais comuns o ombro, cotovelo e dedos.
+    </p>
+    <p>
+      Os sintomas típicos incluem dor intensa, deformidade visível, incapacidade de movimentar a articulação e edema.
+    </p>
+    <p>
+      O diagnóstico é confirmado pela avaliação clínica e exames de imagem, especialmente radiografia. O tratamento inicial visa à redução imediata da luxação para evitar danos neurovasculares e outras complicações.
+    </p>
+    <p>
+      Após a redução, a articulação deve ser imobilizada e o paciente encaminhado para reabilitação visando à recuperação da amplitude e força muscular.
+    </p>
+  </section>
 
-    <section id="fratura">
-      <h3>Fratura</h3>
-      <p>
-        Fraturas correspondem à interrupção da continuidade óssea, geralmente causadas por traumas diretos, quedas ou esforços repetitivos.
-      </p>
-      <p><strong>Principais tipos:</strong> fraturas do fêmur proximal, rádio distal, clavícula e tornozelo.</p>
-      <p><strong>Tratamento:</strong></p>
-      <ol>
-        <li>Estabilização médica inicial, com imobilização adequada;</li>
-        <li>Controle da dor e do edema;</li>
-        <li>Início gradual da mobilidade conforme consolidação óssea;</li>
-        <li>Fortalecimento muscular e restabelecimento funcional;</li>
-        <li>Reintegração progressiva às atividades diárias e esportivas.</li>
-      </ol>
-      <p>
-        Os recursos fisioterapêuticos utilizados incluem cinesioterapia, terapia manual, eletroterapia e orientações específicas para cada fase da consolidação óssea.
-      </p>
-    </section>
+  <section id="fratura" class="card" tabindex="0">
+    <h2>Fratura</h2>
+    <p>
+      A fratura é a interrupção da continuidade óssea, podendo ser classificada em simples, cominutiva, exposta, entre outras. Pode ocorrer por trauma direto, indireto ou por fragilidade óssea.
+    </p>
+    <p>
+      As fraturas são acompanhadas de dor intensa, edema, deformidade, crepitação óssea e incapacidade funcional.
+    </p>
+    <p>
+      O diagnóstico exige exame físico detalhado e radiológico. O tratamento varia conforme o tipo e localização, podendo ser conservador (imobilização) ou cirúrgico (fixação interna ou externa).
+    </p>
+    <p>
+      A recuperação depende do cuidado com o repouso, nutrição adequada, fisioterapia e controle de possíveis complicações como infecções e consolidação anormal.
+    </p>
+  </section>
 
-    <section id="pos-trauma">
-      <h3>Pós-Trauma</h3>
-      <p>
-        Após um trauma, seja decorrente de atividades físicas, acidentes ou outras situações, a fisioterapia traumato-ortopédica é essencial para restaurar a função e qualidade de vida do paciente.
-      </p>
-      <p><strong>Objetivos do tratamento:</strong></p>
-      <ul>
-        <li>Reduzir dor e inflamação;</li>
-        <li>Evitar atrofia muscular e rigidez articular;</li>
-        <li>Restaurar amplitude de movimento e força muscular;</li>
-        <li>Melhorar equilíbrio e marcha;</li>
-        <li>Promover a reintegração social e funcional do paciente.</li>
-      </ul>
-      <p><strong>Técnicas utilizadas:</strong> exercícios terapêuticos, mobilizações articulares, eletroterapia e treino de marcha, sempre individualizando o plano de tratamento e monitorando a evolução do paciente.</p>
-    </section>
+  <section id="entrevista" class="card" tabindex="0">
+    <h2>Entrevista</h2>
+    <p>
+      Durante a avaliação inicial do paciente com trauma musculoesquelético, a entrevista clínica é fundamental para reunir informações detalhadas sobre o mecanismo da lesão, sintomas apresentados, histórico médico e fatores predisponentes.
+    </p>
+    <p>
+      Perguntas essenciais envolvem: descrição do evento traumático, localização e intensidade da dor, presença de alterações sensoriais ou motoras, além de alergias, medicações em uso e comorbidades.
+    </p>
+    <p>
+      A comunicação empática e o uso de linguagem acessível são essenciais para garantir a confiança do paciente e a coleta de dados precisos.
+    </p>
+  </section>
 
-    <section id="complicacoes">
-      <h3>Complicações</h3>
-      <p>
-        Algumas complicações comuns em traumatologia ortopédica podem afetar o processo de recuperação e qualidade de vida do paciente.
-      </p>
-      <p><strong>Principais complicações:</strong></p>
-      <ul>
-        <li>Trombose Venosa Profunda (TVP);</li>
-        <li>Osteomielite (infecção óssea);</li>
-        <li>Artrite Séptica (infecção articular);</li>
-        <li>Embolia Gordurosa.</li>
-      </ul>
-      <p>
-        A fisioterapia auxilia na prevenção e tratamento dessas complicações, promovendo a recuperação funcional e minimizando sequelas.
-      </p>
-      <p><strong>Intervenções fisioterapêuticas:</strong></p>
-      <ul>
-        <li>Exercícios passivos, ativos e isométricos;</li>
-        <li>Mobilizações articulares;</li>
-        <li>Fisioterapia respiratória para prevenção de complicações pulmonares;</li>
-        <li>Uso de meias de compressão para prevenção de TVP;</li>
-        <li>Hidroterapia;</li>
-        <li>Alongamentos e fortalecimento muscular.</li>
-      </ul>
-    </section>
+  <section id="pos-trauma" class="card" tabindex="0">
+    <h2>Pós trauma</h2>
+    <p>
+      O manejo inicial após o trauma musculoesquelético inclui medidas de primeiros socorros como o protocolo PRICE (Proteção, Repouso, Ice - gelo, Compressão e Elevação).
+    </p>
+    <p>
+      É importante controlar a dor e o edema, além de evitar movimentações que possam agravar a lesão. A avaliação médica imediata pode indicar a necessidade de exames complementares e intervenções.
+    </p>
+    <p>
+      O acompanhamento clínico e fisioterápico contínuo é essencial para minimizar sequelas e promover a recuperação funcional plena.
+    </p>
+  </section>
 
-    <section id="imobilizacao">
-      <h3>Imobilização</h3>
-      <p>
-        A imobilização ortopédica é uma técnica fundamental no tratamento de lesões ósseas e musculares, que consiste na aplicação de talas, gessos ou outros dispositivos para impedir o movimento da área lesionada, permitindo a cicatrização adequada.
-      </p>
-      <p><strong>Indicações:</strong> fraturas, luxações, entorses e lesões musculares que necessitam de estabilização.</p>
-      <p><strong>Objetivos da imobilização:</strong></p>
-      <ul
-<section id="pos-cirurgico">
-  <h3>Pós-Cirúrgico</h3>
-  <p>
-    O período pós-cirúrgico em traumatologia ortopédica é crucial para garantir a recuperação funcional e minimizar complicações após intervenções cirúrgicas como fixação de fraturas, artroplastias e reparos ligamentares.
-  </p>
-  <p><strong>Objetivos do tratamento fisioterapêutico no pós-cirúrgico:</strong></p>
-  <ul>
-    <li>Controle da dor e do edema;</li>
-    <li>Prevenção de aderências e contraturas;</li>
-    <li>Recuperação da amplitude de movimento articular;</li>
-    <li>Fortalecimento muscular progressivo;</li>
-    <li>Melhora da propriocepção e do equilíbrio;</li>
-    <li>Reintegração gradual às atividades diárias e laborais;</li>
-    <li>Prevenção de complicações pulmonares e trombóticas.</li>
-  </ul>
-  <p>
-    As intervenções fisioterapêuticas podem incluir técnicas como terapia manual, cinesioterapia, exercícios respiratórios, drenagem linfática, eletroterapia e treino funcional, sempre respeitando os limites e a fase da cicatrização de cada paciente.
-  </p>
-  <p>
-    O acompanhamento constante e a comunicação com a equipe médica são essenciais para ajustar o plano terapêutico conforme a evolução clínica, promovendo a máxima recuperação possível com segurança.
-  </p>
-</section>
+  <section id="complicacao-lesao" class="card" tabindex="0">
+    <h2>Complicações da lesão</h2>
+    <p>
+      As complicações pós-lesão musculoesquelética podem incluir infecção (especialmente em fraturas expostas), síndrome compartimental, trombose venosa profunda, consolidação viciosa e osteomielite.
+    </p>
+    <p>
+      A vigilância constante e o tratamento precoce são fundamentais para prevenir danos permanentes e preservar a qualidade de vida do paciente.
+    </p>
+  </section>
+
+  <section id="imobilizacao" class="card" tabindex="0">
+    <h2>Imobilização</h2>
+    <p>
+      A imobilização correta é um dos pilares do tratamento ortopédico. Pode ser realizada com gesso, tala, órtese ou dispositivos externos, dependendo da lesão e da necessidade de estabilização.
+    </p>
+    <p>
+      A técnica adequada evita deslocamentos, controla a dor e facilita a cicatrização óssea e tecidual.
+    </p>
+    <p>
+      O tempo de imobilização varia conforme a gravidade da lesão e deve ser avaliado periodicamente para evitar rigidez e atrofia muscular.
+    </p>
+  </section>
+
+  <section id="pos-cirurgico" class="card" tabindex="0">
+    <h2>Pós cirúrgico + Conclusão</h2>
+    <p>
+      O pós-operatório em cirurgias ortopédicas requer cuidados rigorosos para prevenir infecções, trombose e outras complicações.
+    </p>
+    <p>
+      A reabilitação precoce, com fisioterapia específica, é fundamental para restabelecer a função articular, força muscular e mobilidade.
+    </p>
+    <p>
+      Em conclusão, o conhecimento aprofundado das lesões musculoesqueléticas e sua abordagem multidisciplinar é essencial para a recuperação efetiva do paciente e sua reintegração às atividades cotidianas.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>Esse site foi produzido por Jully Aguiar, Gabrielle Santana, Thayna Souza, Maria Eduarda Machado, Millena Mendonça, Camili Santos, Helena Bonfim, Beatriz Rafaelle, Flávia Oliveira e Luiz Felipe. © 2025</p>
+</footer>
+
+<script>
+  // Toggle menu mobile
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileNav = document.getElementById('mobileMenu');
+
+  menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+    menuToggle.setAttribute('aria-expanded', !expanded);
+    mobileNav.classList.toggle('show');
+  });
+
+  menuToggle.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      menuToggle.click();
+    }
+  });
+</script>
+
+</body>
+</html>
